@@ -25,11 +25,12 @@
   $("#fDist").textContent = D.name || ""; $("#fHcm").textContent = D.hcm || ""; $("#fHn").textContent = D.hn || "";
   $("#fHot").textContent = D.hotline || ""; $("#fMail").textContent = D.email || "";
   const fb = (cfg.SOCIAL || []).find(s => s.key === "facebook"); if (fb) $("#schoolLink").href = fb.url;
-  const PLAT = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", web: "Website", youtube: "YouTube" };
+  const PLAT = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", web: "Website", youtube: "YouTube", shopee: "Shopee" };
+  const GO = { web: "Ghé website", shopee: "Mua chính hãng" };
   (cfg.SOCIAL || []).forEach(s => {
     const a = el("a"); a.href = s.url; a.target = "_blank"; a.rel = "noopener";
     const plat = el("div", "plat"); plat.append(el("span", "", PLAT[s.key] || s.key), el("span", "", "↗"));
-    const go = el("div", "go"); go.append(el("span", "", s.key === "web" ? "Ghé website" : "Theo dõi"));
+    const go = el("div", "go"); go.append(el("span", "", GO[s.key] || "Theo dõi"));
     a.append(plat, el("div", "handle", s.handle), el("div", "blurb", s.blurb), go);
     $("#socialGrid").append(a);
   });

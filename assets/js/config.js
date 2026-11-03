@@ -16,14 +16,16 @@ window.KHOANH_CONFIG = {
 
   // Kênh chính thức (sửa tại đây nếu đổi link)
   SOCIAL: [
-    { key: "facebook",  name: "Nikon School Vietnam", handle: "fb.com/NikonSchoolVN", url: "https://www.facebook.com/NikonSchoolVN/",
+    { key: "web",       name: "Nikon Việt Nam · VHG", handle: "vhgvietnam.vn", url: "https://vhgvietnam.vn/",
+      blurb: "Sản phẩm chính hãng, bảo hành, sự kiện và khuyến mãi." },
+    { key: "facebook",  name: "Nikon School Vietnam", handle: "NikonSchoolVN", url: "https://www.facebook.com/NikonSchoolVN/",
       blurb: "Lịch workshop, khoá học và buổi chụp ngoại cảnh cùng Nikon School." },
     { key: "instagram", name: "Nikon Vietnam", handle: "@nikonvietnam", url: "https://www.instagram.com/nikonvietnam/",
       blurb: "Tác phẩm chọn lọc từ cộng đồng và sản phẩm mới." },
     { key: "tiktok",    name: "Nikon Vietnam", handle: "@nikon.vietnam", url: "https://www.tiktok.com/@nikon.vietnam",
       blurb: "Mẹo chụp nhanh, hậu trường và review máy Z." },
-    { key: "web",       name: "Nikon Việt Nam · VHG", handle: "vhgvietnam.vn", url: "https://vhgvietnam.vn/",
-      blurb: "Sản phẩm chính hãng, bảo hành, sự kiện và khuyến mãi." }
+    { key: "shopee",    name: "Nikon Việt Nam Official", handle: "Nikon trên Shopee", url: "https://shopee.vn/nikonecommkp",
+      blurb: "Gian hàng chính hãng: máy ảnh, ống kính NIKKOR và phụ kiện, giao toàn quốc." }
   ],
 
   DISTRIBUTOR: {
