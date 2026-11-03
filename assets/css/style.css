@@ -341,7 +341,7 @@ footer .mark{font:800 28px/1 var(--display);font-stretch:125%;text-transform:upp
   .filterbar{position:static;margin-bottom:24px}
   .filterbar .in{background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0;gap:12px}
   .chips{flex:1 1 100%;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r)}
-  .chip{background:color-mix(in srgb,var(--fg) 7%,transparent)}
+  .chip{background:color-mix(in srgb,var(--fg) 7%,transparent);min-height:44px}
   .tools{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;margin-left:0}
   .search{grid-column:1/-1;width:auto;min-height:44px}
   .tools select{min-height:44px;min-width:0}
