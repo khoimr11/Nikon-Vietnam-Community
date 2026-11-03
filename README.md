@@ -67,9 +67,18 @@ Gợi ý giai đoạn 2: tự động chấm điểm ảnh nhạy cảm trước
 
 ## 4. Logo và nhận diện Nikon
 
-- Đặt **file logo chính thức** (lấy từ bộ brand kit Nikon/VHG) tại `assets/img/nikon-logo.svg` hoặc `assets/img/nikon-logo.png`. Website tự hiển thị; khi chưa có file sẽ hiện chữ "NIKON".
-- Màu dùng trong `assets/css/style.css`: Vàng Nikon `#FFE100` (Pantone 107 C, giá trị phổ biến), Đen, Xám ấm `#4A4A4A`, Bạc `#C9CDD6`. Nếu brand guideline chính thức của Nikon có mã khác, sửa các biến `--nikon-*` ở đầu file.
-- Vàng chỉ dùng cho điểm nhấn và nút hành động chính; ảnh của cộng đồng luôn là trung tâm.
+Theo trang Brand Symbol của Nikon, biểu tượng dùng hai màu: **vàng** (mở rộng, đam mê) và **đen** (tin cậy, chất lượng). Website áp dụng:
+
+| Vai trò | Màu |
+|---|---|
+| Header, chân trang | Đen `#000000` (cả giao diện sáng và tối) |
+| Nút chính, điểm nhấn, nhãn "Dự thi" | Vàng Nikon `#FFE100` với chữ đen |
+| Nền | Đen (giao diện tối) / Trắng (giao diện sáng) |
+| Chữ phụ | Xám `#4A4A4A` / `#9E9E9E` |
+
+Mã `#FFE100` (Pantone 107 C) là giá trị phổ biến; Nikon không công bố mã hex. Nếu brand guideline nội bộ có mã khác, sửa các biến `--nikon-*` ở đầu `assets/css/style.css`.
+
+**Thêm logo:** lấy file logo chính thức từ brand kit Nikon/VHG Marketing, đặt tên `nikon-logo.svg` (hoặc `.png`), rồi trên GitHub vào thư mục `assets/img` → **Add file → Upload files** → Commit. Website tự hiện logo trên thanh header đen, không cần sửa code. Khi chưa có file, header hiện chữ "NIKON".
 
 ## 5. Mỗi tháng đổi thử thách
 
