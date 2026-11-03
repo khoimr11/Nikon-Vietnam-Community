@@ -1,4 +1,4 @@
-/* Cấu hình website Khoảnh.
+/* Cấu hình website Nikon Atelier.
  * Để trống SUPABASE_URL thì website chạy ở chế độ DEMO (ảnh mẫu, không lưu dữ liệu).
  * Điền 2 giá trị lấy ở Supabase → Project Settings → API.
  * "anon public key" được phép công khai: quyền truy cập đã khoá bằng Row Level Security trong schema.sql. */
@@ -9,7 +9,7 @@ window.KHOANH_CONFIG = {
   // Chủ đề thử thách tháng hiện tại
   CHALLENGE: {
     title: "Ánh sáng cuối ngày",
-    hashtag: "#KhoanhNikon",
+    hashtag: "#NikonAtelierVN",
     prize: "Áo Nikon phiên bản giới hạn và bản in Fine Art khổ A2",
     communityPrize: "Giải “Cộng đồng yêu thích” cho tác phẩm nhiều lượt thích nhất"
   },

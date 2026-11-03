@@ -1,4 +1,4 @@
-# Khoảnh · Cộng đồng nhiếp ảnh Nikon Việt Nam
+# Nikon Atelier · Cộng đồng nhiếp ảnh Nikon Việt Nam
 
 Website tĩnh (chạy trên GitHub Pages) để người dùng Nikon đăng ảnh, thả tim, bình luận và tham gia thử thách tháng. Tài khoản đăng ký bằng email; mọi ảnh phải được ban quản trị duyệt trước khi hiển thị.
 
@@ -45,10 +45,10 @@ Khi chưa điền khoá Supabase, website chạy **chế độ demo** với ản
 ### Thư xác nhận tiếng Việt
 **Authentication → Emails → Templates → Confirm signup**, ví dụ:
 
-- Subject: `Xác nhận tài khoản Khoảnh · Cộng đồng Nikon Việt Nam`
+- Subject: `Xác nhận tài khoản Nikon Atelier`
 - Body:
   ```html
-  <h2>Chào mừng bạn đến với Khoảnh</h2>
+  <h2>Chào mừng bạn đến với Nikon Atelier</h2>
   <p>Bấm nút dưới đây để xác nhận email và bắt đầu treo ảnh của bạn.</p>
   <p><a href="{{ .ConfirmationURL }}">Xác nhận email</a></p>
   <p>Nikon Việt Nam · VHG</p>

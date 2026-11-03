@@ -1,5 +1,5 @@
 -- =====================================================================
--- Khoảnh · Cộng đồng nhiếp ảnh Nikon Việt Nam
+-- Nikon Atelier · Cộng đồng nhiếp ảnh Nikon Việt Nam
 -- Supabase schema: tài khoản email, ảnh chờ duyệt, thích, bình luận,
 -- báo cáo vi phạm, lọc từ khoá. Chạy toàn bộ file này một lần trong
 -- Supabase Dashboard → SQL Editor → New query → Run.

@@ -1,4 +1,4 @@
-/* Khoảnh — phần dùng chung cho trang cộng đồng và trang duyệt ảnh */
+/* Nikon Atelier — phần dùng chung cho trang cộng đồng và trang duyệt ảnh */
 (function () {
   "use strict";
   const cfg = window.KHOANH_CONFIG || {};

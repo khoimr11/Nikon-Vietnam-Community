@@ -1,7 +1,7 @@
-# PRODUCT · Khoảnh
+# PRODUCT · Nikon Atelier
 
 ## Sản phẩm
-Khoảnh là phòng trưng bày và thử thách ảnh hằng tháng của cộng đồng người chụp Nikon tại Việt Nam, do Nikon Việt Nam (nhà phân phối VHG) vận hành. Mục tiêu chính là nhận diện thương hiệu Nikon và gắn kết chủ máy sau khi mua.
+Nikon Atelier là phòng trưng bày và thử thách ảnh hằng tháng của cộng đồng người chụp Nikon tại Việt Nam, do Nikon Việt Nam (nhà phân phối VHG) vận hành. Mục tiêu chính là nhận diện thương hiệu Nikon và gắn kết chủ máy sau khi mua.
 
 ## Người dùng
 - **Thành viên:** chủ máy Nikon tại Việt Nam, từ người mới tới người chụp lâu năm. Dùng điện thoại là chính để xem và thả tim, dùng máy tính để gửi ảnh.

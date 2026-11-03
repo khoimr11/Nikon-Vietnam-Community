@@ -1,4 +1,4 @@
-/* Khoảnh — trang cộng đồng */
+/* Nikon Atelier — trang cộng đồng */
 (function () {
   "use strict";
   const { $, $$, el, cfg, sb, DEMO } = K;
@@ -17,18 +17,29 @@
   $("#cTitle").textContent = "Vinh danh tháng " + (K.M + 1);
   $("#chLabel").textContent = "Tham gia thử thách tháng " + (K.M + 1) + ": " + (CH.title || "");
   $("#prizeMain").textContent = CH.prize || ""; $("#prizeCommunity").textContent = CH.communityPrize || "";
-  $("#hashtag").textContent = CH.hashtag || "#KhoanhNikon";
+  $("#hashtag").textContent = CH.hashtag || "#NikonAtelierVN";
   const D = cfg.DISTRIBUTOR || {};
   $("#fDist").textContent = D.name || ""; $("#fHcm").textContent = D.hcm || ""; $("#fHn").textContent = D.hn || "";
   $("#fHot").textContent = D.hotline || ""; $("#fMail").textContent = D.email || "";
   const fb = (cfg.SOCIAL || []).find(s => s.key === "facebook"); if (fb) $("#schoolLink").href = fb.url;
   const PLAT = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", web: "Website", youtube: "YouTube", shopee: "Shopee" };
   const GO = { web: "Ghé website", shopee: "Mua chính hãng" };
+  const COVER = { web: "dalat-fog", facebook: "window-light", instagram: "reeds", tiktok: "saigon-trails", shopee: "dunes", youtube: "star-trails" };
   (cfg.SOCIAL || []).forEach(s => {
     const a = el("a", s.key === "shopee" ? "shop" : ""); a.href = s.url; a.target = "_blank"; a.rel = "noopener";
-    const plat = el("div", "plat"); plat.append(el("span", "", PLAT[s.key] || s.key), el("span", "", "↗"));
-    a.append(plat, el("div", "handle", s.handle), el("div", "blurb", s.blurb), el("div", "go", (GO[s.key] || "Theo dõi") + " →"));
-    $("#socialGrid").append(a);
+    a.setAttribute("aria-label", (PLAT[s.key] || s.key) + ": " + s.handle);
+    const media = el("div", "ch-media"), cover = new Image(); cover.alt = ""; cover.loading = "lazy";
+    cover.src = "assets/img/samples/" + (s.cover || COVER[s.key] || "seascape") + "-sm.jpg"; media.append(cover);
+    /* Logo kênh: đặt file chính thức vào assets/img/social/<key>.svg (hoặc .png); chưa có file thì hiện tên kênh */
+    const mark = el("span", "ch-mark glass-clear"), name = el("span", "ch-name", PLAT[s.key] || s.key); mark.append(name);
+    const logo = new Image(); logo.alt = PLAT[s.key] || s.key; logo.className = "ch-logo"; let tries = ["svg", "png"], ti = 0;
+    logo.onload = () => { mark.classList.add("has-logo"); mark.prepend(logo); };
+    logo.onerror = () => { ti++; if (ti < tries.length) logo.src = "assets/img/social/" + s.key + "." + tries[ti]; };
+    logo.src = "assets/img/social/" + s.key + "." + tries[0];
+    media.append(mark, el("span", "ch-arrow glass-clear", "↗"));
+    const body = el("div", "ch-body");
+    body.append(el("div", "handle", s.handle), el("div", "blurb", s.blurb), el("div", "go", (GO[s.key] || "Theo dõi") + " →"));
+    a.append(media, body); $("#socialGrid").append(a);
   });
   K.GENRES.forEach(g => $("#fGenre").append(new Option(g, g)));
   K.CAMS.forEach(c => { $("#fCam").append(new Option(c, c)); $("#sCam").append(new Option(c, c)); });
@@ -251,7 +262,7 @@
   function setTab(t) {
     $("#tabLogin").setAttribute("aria-selected", String(t === "login")); $("#tabSignup").setAttribute("aria-selected", String(t === "signup"));
     $("#loginForm").hidden = t !== "login"; $("#signupForm").hidden = t !== "signup"; $("#resetForm").hidden = t !== "reset"; $(".tabs").hidden = t === "reset";
-    $("#authTitle").textContent = t === "signup" ? "Gia nhập Khoảnh" : t === "reset" ? "Mật khẩu mới" : "Chào mừng trở lại";
+    $("#authTitle").textContent = t === "signup" ? "Gia nhập Nikon Atelier" : t === "reset" ? "Mật khẩu mới" : "Chào mừng trở lại";
   }
   function authMsg(t, err) { const m = $("#authMsg"); m.textContent = t || ""; m.className = "msg" + (err ? " err" : ""); }
   function openAuth(tab, msg) {

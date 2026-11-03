@@ -1,4 +1,4 @@
-/* Khoảnh — trang duyệt ảnh cho ban quản trị */
+/* Nikon Atelier — trang duyệt ảnh cho ban quản trị */
 (function () {
   "use strict";
   const { $, $$, el, sb, DEMO } = K;
