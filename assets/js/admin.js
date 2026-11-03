@@ -2,7 +2,7 @@
 (function () {
   "use strict";
   const { $, $$, el, sb, DEMO } = K;
-  const A = { me: null, tab: "pending", pending: [], reports: [], comments: [], approved: [], terms: [], urls: {} };
+  const A = { me: null, sel: 0, tab: "pending", pending: [], reports: [], comments: [], approved: [], terms: [], urls: {} };
   K.mountLogo();
   if (DEMO) $("#demoBar").hidden = false;
 
@@ -32,11 +32,11 @@
     A.urls = await K.signed([...new Set(paths)]);
     render();
   }
-  const src = w => w.sample ? K.paint(w) : (A.urls[w.storage_path] || "");
+  const src = w => w.sample ? K.sampleSrc(w, true) : (A.urls[w.storage_path] || "");
 
   /* ---------- render ---------- */
   function counts() {
-    $("#cPending").textContent = A.pending.length; $("#cReports").textContent = A.reports.length;
+    $("#cPending").textContent = A.pending.length; $("#cReports").textContent = A.reports.length; if (A.sel >= A.pending.length) A.sel = Math.max(0, A.pending.length - 1);
     $("#cFlagged").textContent = A.comments.length; $("#cApproved").textContent = A.approved.length + (A.approved.length >= 60 ? "+" : "");
   }
   function render() {
@@ -48,7 +48,8 @@
   function photoCard(w, extra) {
     const item = el("article", "qitem"); const img = new Image(); img.alt = w.title; img.src = src(w);
     const meta = el("div", "meta");
-    meta.append(el("div", "eyebrow", (w.genre || "") + (w.in_challenge ? " · Dự thi " + (w.month || "") : "")), el("h3", "", w.title));
+    const tags = el("div", "muted"); tags.style.fontSize = "13px"; tags.textContent = (w.genre || "") + (w.in_challenge ? " · Dự thi " + (w.month || "") : "");
+    meta.append(tags, el("h2", "", w.title));
     const dl = el("dl");
     [["Tác giả", (w.profiles && w.profiles.display_name) || w.display_name || "—"], ["Gửi lúc", K.fmtAgo(w.created_at)], ["Thiết bị", [w.camera, w.lens].filter(Boolean).join(" · ") || "—"],
       ["Thông số", K.exifLine({ ...w, camera: "" }) || "—"], ["Câu chuyện", w.story || "—"]].forEach(([k, val]) => dl.append(el("dt", "", k), el("dd", "", val)));
@@ -67,7 +68,7 @@
       const ok = el("button", "btn ok small", "Duyệt và treo"); ok.type = "button"; ok.onclick = () => decide(w, "approved");
       const no = el("button", "btn bad small", "Từ chối"); no.type = "button"; no.onclick = () => decide(w, "rejected", sel.value);
       btns.append(ok, no); d.append(cl, sel, btns);
-      const card = photoCard(w, d); if (i === 0) { card.dataset.first = "1"; card._sel = sel; } v.append(card);
+      const card = photoCard(w, d); card._sel = sel; card.dataset.i = i; if (i === A.sel) card.classList.add("focus"); v.append(card);
     });
   }
   async function decide(w, status, reason) {
@@ -154,9 +155,11 @@
   $$("#tabs button").forEach(b => b.onclick = () => { A.tab = b.dataset.tab; render(); });
   document.addEventListener("keydown", e => {
     if (A.tab !== "pending" || /INPUT|SELECT|TEXTAREA/.test((e.target.tagName || "")) || !A.pending.length) return;
-    const first = A.pending[0]; const card = $("[data-first]");
-    if (e.key === "a" || e.key === "A") decide(first, "approved");
-    if (e.key === "r" || e.key === "R") decide(first, "rejected", card && card._sel ? card._sel.value : K.REJECT_REASONS[0]);
+    const k = e.key.toLowerCase(); const cards = $$("#view .qitem");
+    if (k === "j" || k === "k") { A.sel = Math.min(A.pending.length - 1, Math.max(0, A.sel + (k === "j" ? 1 : -1))); cards.forEach((c, i) => c.classList.toggle("focus", i === A.sel)); if (cards[A.sel]) cards[A.sel].scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth" }); return; }
+    const w = A.pending[A.sel], card = cards[A.sel]; if (!w) return;
+    if (k === "a") decide(w, "approved");
+    if (k === "r") decide(w, "rejected", card && card._sel ? card._sel.value : K.REJECT_REASONS[0]);
   });
 
   /* ---------- auth gate ---------- */

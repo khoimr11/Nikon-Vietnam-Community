@@ -6,23 +6,21 @@
 <title>Khoảnh · Trang duyệt ảnh</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,500;1,300;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="demo" id="demoBar" hidden><div class="wrap"><b>Chế độ demo.</b> Hàng chờ dưới đây dùng ảnh mẫu để minh hoạ quy trình duyệt; thao tác không được lưu.</div></div>
+<div class="demo" id="demoBar" hidden><div class="wrap"><i></i><span>Bản demo: hàng chờ dùng ảnh mẫu để minh hoạ quy trình duyệt, thao tác chưa được lưu.</span></div></div>
 
 <header class="top">
-  <div class="wrap">
+  <div class="bar glass">
     <a class="brand" href="index.html">
       <span class="logo-slot" data-logo><span class="logo-text">Nikon</span></span>
-      <span class="sep" aria-hidden="true"></span>
-      <span class="name"><b>Khoảnh</b><span>Trang duyệt ảnh</span></span>
+      <span class="divider" aria-hidden="true"></span>
+      <b>Khoảnh · Duyệt ảnh</b>
     </a>
     <div class="acct" style="margin-left:auto">
-      <span class="note" id="whoami"></span>
+      <span class="muted" id="whoami" style="font-size:13px"></span>
       <a class="btn small" href="index.html">Về trang cộng đồng</a>
       <button class="btn small" type="button" id="logout" hidden>Đăng xuất</button>
     </div>
@@ -30,43 +28,39 @@
 </header>
 
 <main class="wrap">
-  <section id="login" hidden style="max-width:420px;padding-block:56px">
-    <div class="eyebrow">Ban quản trị</div>
-    <h1 style="font-size:40px;margin:10px 0 20px">Đăng nhập để duyệt ảnh</h1>
-    <form id="loginForm" novalidate>
-      <div class="f"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email"></div>
-      <div class="f"><label for="aPass">Mật khẩu</label><input id="aPass" type="password" autocomplete="current-password"></div>
-      <button class="btn primary" type="submit">Đăng nhập</button>
+  <section id="login" hidden style="max-width:440px;padding-block:72px">
+    <h1 class="display" style="font-size:40px;margin-bottom:24px">Đăng nhập ban quản trị</h1>
+    <form id="loginForm" class="fields" novalidate>
+      <div class="field"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email"></div>
+      <div class="field"><label for="aPass">Mật khẩu</label><input id="aPass" type="password" autocomplete="current-password"></div>
+      <div><button class="btn primary" type="submit">Đăng nhập</button></div>
       <div class="msg" id="loginMsg" role="status"></div>
     </form>
   </section>
 
-  <section id="denied" hidden style="padding-block:56px;max-width:560px">
-    <h1 style="font-size:36px">Tài khoản này chưa có quyền duyệt ảnh</h1>
-    <p class="note">Nhờ quản trị viên cấp quyền “moderator” cho email của bạn (hướng dẫn trong README, mục Cấp quyền).</p>
+  <section id="denied" hidden style="padding-block:72px;max-width:620px">
+    <h1 class="display" style="font-size:36px;margin-bottom:16px">Tài khoản chưa có quyền duyệt</h1>
+    <p class="muted">Nhờ quản trị viên cấp quyền moderator cho email của bạn. Hướng dẫn trong README, mục Cấp quyền.</p>
   </section>
 
   <section id="panel" hidden>
-    <div class="admin-top">
-      <div>
-        <div class="eyebrow">Kiểm duyệt nội dung</div>
-        <h1>Hàng chờ duyệt</h1>
-      </div>
-      <div class="counts">
-        <div class="hot"><span class="eyebrow">Chờ duyệt</span><strong id="cPending">—</strong></div>
-        <div><span class="eyebrow">Báo cáo mới</span><strong id="cReports">—</strong></div>
-        <div><span class="eyebrow">Lời nhắn gắn cờ</span><strong id="cFlagged">—</strong></div>
-        <div><span class="eyebrow">Đã trưng bày</span><strong id="cApproved">—</strong></div>
+    <div class="admin-head">
+      <h1 class="display">Hàng chờ duyệt</h1>
+      <div class="kpis">
+        <div class="hot"><strong id="cPending">—</strong><span>chờ duyệt</span></div>
+        <div><strong id="cReports">—</strong><span>báo cáo mới</span></div>
+        <div><strong id="cFlagged">—</strong><span>lời nhắn gắn cờ</span></div>
+        <div><strong id="cApproved">—</strong><span>đang trưng bày</span></div>
       </div>
     </div>
-    <div class="tabs" role="tablist" id="tabs">
+    <div class="admin-tabs" role="tablist" id="tabs">
       <button type="button" role="tab" data-tab="pending" aria-selected="true">Chờ duyệt</button>
       <button type="button" role="tab" data-tab="reports" aria-selected="false">Báo cáo</button>
       <button type="button" role="tab" data-tab="comments" aria-selected="false">Lời nhắn</button>
-      <button type="button" role="tab" data-tab="approved" aria-selected="false">Đã trưng bày</button>
+      <button type="button" role="tab" data-tab="approved" aria-selected="false">Đang trưng bày</button>
       <button type="button" role="tab" data-tab="terms" aria-selected="false">Từ khoá lọc</button>
     </div>
-    <p class="note" id="hint">Phím tắt trên ảnh đầu hàng: A để duyệt, R để từ chối với lý do đã chọn.</p>
+    <p class="hint" id="hint">Phím tắt: J / K chọn ảnh, A duyệt, R từ chối với lý do đang chọn.</p>
     <div id="view" class="queue"></div>
   </section>
 </main>

@@ -6,161 +6,154 @@
 <title>Khoảnh · Cộng đồng Nikon Việt Nam</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Phòng trưng bày và thử thách ảnh hằng tháng của cộng đồng người chụp Nikon tại Việt Nam.">
+<meta name="theme-color" content="#000000">
 <meta property="og:title" content="Khoảnh · Cộng đồng Nikon Việt Nam">
 <meta property="og:description" content="Treo ảnh của bạn, nhận lượt thích từ cộng đồng và tham gia thử thách tháng cùng Nikon Việt Nam.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,500;1,300;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:image" content="assets/img/samples/dalat-fog.jpg">
+<link rel="preload" href="assets/fonts/archivo-vietnamese-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="demo" id="demoBar" hidden><div class="wrap"><b>Chế độ demo.</b> Ảnh gắn nhãn “Mẫu” là hình minh hoạ; lượt thích không được lưu. Kết nối Supabase theo README để bật đăng ký, gửi ảnh và duyệt ảnh.</div></div>
+<div class="demo" id="demoBar" hidden><div class="wrap"><i></i><span>Bản demo: ảnh gắn nhãn “Mẫu” là ảnh minh hoạ, lượt thích chưa được lưu.</span></div></div>
 
 <header class="top">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Khoảnh, Cộng đồng Nikon Việt Nam">
+  <div class="bar glass">
+    <a class="brand" href="#top" aria-label="Khoảnh, cộng đồng Nikon Việt Nam">
       <span class="logo-slot" data-logo><span class="logo-text">Nikon</span></span>
-      <span class="sep" aria-hidden="true"></span>
-      <span class="name"><b>Khoảnh</b><span>Cộng đồng Nikon Việt Nam</span></span>
+      <span class="divider" aria-hidden="true"></span>
+      <b>Khoảnh</b>
     </a>
     <nav class="nav" aria-label="Mục chính">
-      <a href="#gallery">Phòng trưng bày</a>
-      <a href="#challenge">Thử thách tháng</a>
+      <a href="#gallery">Trưng bày</a>
+      <a href="#challenge">Thử thách</a>
       <a href="#school">Nikon School</a>
-      <a href="#social">Kênh Nikon</a>
+      <a href="#channels">Kênh Nikon</a>
     </nav>
     <div class="acct" id="acct">
       <button class="btn small" type="button" id="loginBtn">Đăng nhập</button>
       <a class="btn small primary" href="#submit">Gửi ảnh</a>
     </div>
   </div>
-  <div class="menu" id="menu" hidden>
-    <div class="who"><b id="menuName"></b><span class="note" id="menuEmail"></span></div>
+  <div class="menu glass" id="menu" hidden>
+    <div class="who"><b id="menuName"></b><span id="menuEmail"></span></div>
     <button type="button" id="mineBtn">Ảnh của tôi</button>
     <a href="admin.html" id="adminLink" hidden>Trang duyệt ảnh</a>
     <button type="button" id="logoutBtn">Đăng xuất</button>
   </div>
 </header>
 
-<main>
-  <section class="hero" id="top">
+<main id="top">
+  <section class="hero" aria-labelledby="heroTitle">
+    <img class="bgimg" id="heroImg" src="assets/img/samples/dalat-fog.jpg" alt="">
     <div class="wrap">
       <div>
-        <div class="eyebrow" id="heroEyebrow">Thử thách tháng</div>
-        <h1 id="heroTitle">Ánh sáng<br><em><span>cuối ngày</span></em></h1>
-        <p class="lede">Khoảnh là phòng trưng bày của người chụp Nikon tại Việt Nam. Mỗi tháng một chủ đề, mỗi tấm ảnh treo kèm thông số như một tác phẩm trong bảo tàng. Tất cả ảnh đều được ban quản trị Nikon Việt Nam duyệt trước khi lên tường.</p>
+        <h1 class="display" id="heroTitle">Ánh sáng cuối ngày</h1>
+        <p class="sub" id="heroSub">Thử thách tháng của cộng đồng Nikon Việt Nam. Gửi tấm ảnh đẹp nhất của bạn, mọi tác phẩm được duyệt trước khi lên tường.</p>
         <div class="cta">
           <a class="btn primary" href="#submit">Gửi tác phẩm dự thi</a>
-          <a class="btn" href="#gallery">Xem phòng trưng bày</a>
-        </div>
-        <div class="meta-row">
-          <div><span class="eyebrow">Còn lại</span><strong id="countdown">—</strong></div>
-          <div><span class="eyebrow">Tác phẩm dự thi</span><strong id="statWorks">—</strong></div>
-          <div><span class="eyebrow">Lượt thích</span><strong id="statLikes">—</strong></div>
+          <a class="btn on-image" href="#gallery">Vào phòng trưng bày</a>
         </div>
       </div>
-      <figure class="frame">
-        <div class="mat"><img id="heroImg" alt="Tác phẩm dẫn đầu tháng"></div>
-        <figcaption class="label" id="heroLabel"></figcaption>
-      </figure>
+      <button class="plaque glass-clear" type="button" id="heroPlaque" aria-label="Xem tác phẩm dẫn đầu"></button>
     </div>
   </section>
 
-  <section class="band" id="gallery">
+  <section class="stats" aria-label="Số liệu thử thách">
+    <div class="wrap">
+      <div class="stat"><strong id="sLeft">—</strong><span>còn lại để gửi ảnh</span></div>
+      <div class="stat"><strong id="sWorks">—</strong><span>tác phẩm dự thi tháng này</span></div>
+      <div class="stat"><strong id="sLikes">—</strong><span>lượt thích từ cộng đồng</span></div>
+      <div class="stat"><strong>60/40</strong><span>điểm hội đồng / cộng đồng</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery" aria-labelledby="gTitle">
     <div class="wrap">
       <div class="shead">
-        <div>
-          <div class="eyebrow">Phòng trưng bày</div>
-          <h2>Những khoảnh khắc được treo lên tường</h2>
-          <p>Bấm vào một tấm ảnh để xem lớn, đọc câu chuyện phía sau, thả tim và để lại lời nhắn cho tác giả. Lọc theo thể loại hoặc theo máy Nikon đã chụp.</p>
-        </div>
+        <h2 class="display" id="gTitle">Phòng trưng bày</h2>
+        <p>Mỗi tấm ảnh treo kèm thông số như một tác phẩm trong bảo tàng. Bấm vào ảnh để xem lớn, đọc câu chuyện phía sau và để lại lời nhắn cho tác giả.</p>
       </div>
-      <div class="controls">
-        <div class="chips" id="filters" role="group" aria-label="Lọc theo thể loại"></div>
-        <div class="ctl-right">
-          <select id="camFilter" aria-label="Lọc theo máy ảnh"></select>
-          <div class="seg" role="group" aria-label="Sắp xếp">
-            <button type="button" id="sortNew" aria-pressed="true">Mới nhất</button>
-            <button type="button" id="sortTop" aria-pressed="false">Được yêu thích</button>
+      <div class="filterbar">
+        <div class="in glass">
+          <div class="chips" id="filters" role="group" aria-label="Lọc theo thể loại"></div>
+          <div class="tools">
+            <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="sr">Tìm ảnh</span><input id="q" type="search" placeholder="Tìm ảnh, tác giả"></label>
+            <select id="camFilter" aria-label="Lọc theo máy ảnh"></select>
+            <div class="seg" role="group" aria-label="Sắp xếp">
+              <button type="button" id="sortNew" aria-pressed="true">Mới nhất</button>
+              <button type="button" id="sortTop" aria-pressed="false">Yêu thích</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="grid" id="grid"></div>
+      <div class="gallery" id="grid"></div>
     </div>
   </section>
 
-  <section class="band" id="challenge">
+  <section class="section" id="challenge" aria-labelledby="cTitle">
     <div class="wrap">
       <div class="shead">
-        <div>
-          <div class="eyebrow" id="lbEyebrow">Bảng vinh danh</div>
-          <h2>Dẫn đầu thử thách tháng này</h2>
-          <p>Xếp hạng theo lượt thích của thành viên đã xác thực email. Mỗi tài khoản chỉ thích một tác phẩm một lần.</p>
-        </div>
+        <h2 class="display" id="cTitle">Bảng vinh danh</h2>
+        <p id="cDesc">Xếp hạng theo lượt thích của thành viên đã xác thực email. Mỗi tài khoản thích một tác phẩm một lần.</p>
       </div>
-      <div class="lb">
-        <ol class="rank-list" id="ranks"></ol>
-        <div>
-          <div class="eyebrow" style="margin-bottom:18px">Cách chọn người thắng</div>
+      <div class="challenge">
+        <ol class="ranks" id="ranks"></ol>
+        <div class="rules">
           <ol class="steps">
-            <li><div><h3>Cộng đồng bình chọn</h3><p>Cuối tháng, 10 tác phẩm nhiều lượt thích nhất vào chung kết.</p></div></li>
+            <li><div><h3>Cộng đồng bình chọn</h3><p>Hết tháng, 10 tác phẩm nhiều lượt thích nhất vào chung kết.</p></div></li>
             <li><div><h3>Hội đồng chấm điểm</h3><p>Nhiếp ảnh gia khách mời và Nikon Việt Nam chấm bố cục, ánh sáng, câu chuyện. Điểm hội đồng 60%, cộng đồng 40%.</p></div></li>
-            <li><div><h3>Công bố và trưng bày</h3><p>Tác phẩm thắng được in Fine Art, giới thiệu trên kênh của Nikon Việt Nam và Nikon School.</p></div></li>
+            <li><div><h3>Công bố và trưng bày</h3><p>Tác phẩm thắng được in Fine Art và giới thiệu trên các kênh của Nikon Việt Nam.</p></div></li>
           </ol>
-          <div class="prize">
-            <span class="eyebrow">Giải thưởng tháng</span>
-            <b id="prizeMain"></b>
-            <span class="note" id="prizeCommunity"></span>
-          </div>
+          <div class="prize"><b id="prizeMain"></b><span id="prizeCommunity"></span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="submit">
+  <section class="section" id="submit" aria-labelledby="uTitle">
     <div class="wrap">
       <div class="shead">
-        <div>
-          <div class="eyebrow">Gửi tác phẩm</div>
-          <h2>Treo ảnh của bạn lên tường</h2>
-          <p>Ảnh JPG, PNG hoặc WebP. Ảnh lớn được thu về cạnh dài 2400 px. Mỗi tài khoản gửi tối đa 5 ảnh mỗi ngày; ảnh hiển thị sau khi được duyệt, thường trong 24 giờ làm việc.</p>
-        </div>
+        <h2 class="display" id="uTitle">Treo ảnh của bạn</h2>
+        <p>Chọn ảnh JPEG chụp bằng máy Nikon, thông số được đọc tự động từ EXIF. Ảnh hiển thị sau khi ban quản trị duyệt, thường trong 24 giờ làm việc. Tối đa 5 ảnh mỗi ngày.</p>
       </div>
 
       <div class="gate" id="gate">
-        <b>Đăng nhập để gửi ảnh</b>
-        <span class="note">Tạo tài khoản bằng email, xác nhận qua thư, rồi quay lại đây. Thành viên đã xác thực mới được thích, bình luận và gửi ảnh.</span>
-        <div class="cta"><button class="btn primary" type="button" id="gateSignup">Tạo tài khoản</button><button class="btn" type="button" id="gateLogin">Tôi đã có tài khoản</button></div>
+        <h3>Đăng nhập để gửi ảnh</h3>
+        <p class="muted" style="margin:0">Tạo tài khoản bằng email và xác nhận qua thư. Thành viên đã xác thực mới được thích, bình luận và gửi ảnh.</p>
+        <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn primary" type="button" id="gateSignup">Tạo tài khoản</button><button class="btn" type="button" id="gateLogin">Tôi đã có tài khoản</button></div>
       </div>
 
       <div class="submit" id="submitArea" hidden>
         <label class="drop" id="drop" for="file">
-          <div id="dropInner">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M20 3v10M37 20H27M20 37V27M3 20h10" stroke="currentColor" stroke-width="1.2"/></svg>
-            <div style="margin-top:12px;font-weight:500">Kéo ảnh vào đây hoặc bấm để chọn</div>
-            <p>Một tác phẩm mỗi lần gửi</p>
-          </div>
+          <span id="dropInner">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true" style="margin:0 auto"><circle cx="22" cy="22" r="19" stroke="currentColor" stroke-width="1.4"/><path d="M22 3l6 13M41 22l-13 6M22 41l-6-13M3 22l13-6M35.4 8.6l-9.2 9.9M35.4 35.4l-9.9-9.2M8.6 35.4l9.2-9.9M8.6 8.6l9.9 9.2" stroke="currentColor" stroke-width="1.2"/></svg>
+            <span style="display:block;margin-top:14px;font-weight:600">Kéo ảnh vào đây hoặc bấm để chọn</span>
+            <p>JPEG, PNG hoặc WebP · một tác phẩm mỗi lần gửi</p>
+          </span>
           <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
         </label>
-        <form id="form" novalidate>
-          <div class="f"><label for="fTitle">Tên tác phẩm</label><input id="fTitle" maxlength="80" placeholder="Ví dụ: Chiều trên đầm Lập An"></div>
-          <div class="f"><label for="fStory">Câu chuyện phía sau</label><textarea id="fStory" maxlength="600" placeholder="Bạn đã chờ ánh sáng ấy bao lâu?"></textarea></div>
-          <div class="row2">
-            <div class="f"><label for="fGenre">Thể loại</label><select id="fGenre"></select></div>
-            <div class="f"><label for="fCam">Máy ảnh</label><select id="fCam"></select></div>
+        <form id="form" class="fields" novalidate>
+          <div class="exif-note" id="exifNote" hidden><i></i><span id="exifText"></span></div>
+          <div class="field"><label for="fTitle">Tên tác phẩm</label><input id="fTitle" maxlength="80" placeholder="Ví dụ: Chiều trên đầm Lập An"></div>
+          <div class="field"><label for="fStory">Câu chuyện phía sau</label><textarea id="fStory" maxlength="600" placeholder="Bạn đã chờ ánh sáng ấy bao lâu?"></textarea></div>
+          <div class="grid-2">
+            <div class="field"><label for="fGenre">Thể loại</label><select id="fGenre"></select></div>
+            <div class="field"><label for="fCam">Máy ảnh</label><select id="fCam"></select></div>
           </div>
-          <div class="f"><label for="fLens">Ống kính</label><input id="fLens" maxlength="80" placeholder="NIKKOR Z 24-70mm f/2.8 S"></div>
-          <div class="row4">
-            <div class="f"><label for="fF">Khẩu độ</label><input id="fF" inputmode="decimal" placeholder="8"></div>
-            <div class="f"><label for="fS">Tốc độ</label><input id="fS" placeholder="1/250"></div>
-            <div class="f"><label for="fIso">ISO</label><input id="fIso" inputmode="numeric" placeholder="100"></div>
-            <div class="f"><label for="fMm">Tiêu cự</label><input id="fMm" inputmode="numeric" placeholder="35"></div>
+          <div class="field"><label for="fLens">Ống kính</label><input id="fLens" maxlength="80" placeholder="NIKKOR Z 24-70mm f/2.8 S"></div>
+          <div class="grid-4">
+            <div class="field"><label for="fF">Khẩu độ (f/)</label><input id="fF" inputmode="decimal" placeholder="8"></div>
+            <div class="field"><label for="fS">Tốc độ</label><input id="fS" placeholder="1/250"></div>
+            <div class="field"><label for="fIso">ISO</label><input id="fIso" inputmode="numeric" placeholder="100"></div>
+            <div class="field"><label for="fMm">Tiêu cự (mm)</label><input id="fMm" inputmode="numeric" placeholder="35"></div>
           </div>
-          <div class="rules">
+          <div class="house">
             <b>Quy tắc cộng đồng</b>
             <ul>
-              <li>Chỉ gửi ảnh do chính bạn chụp. Ảnh có người cần được sự đồng ý của người trong ảnh.</li>
+              <li>Chỉ gửi ảnh do chính bạn chụp. Ảnh có người cần sự đồng ý của người trong ảnh.</li>
               <li>Không đăng ảnh khiêu dâm, bạo lực, gây sốc hoặc xúc phạm cá nhân, tổ chức.</li>
               <li>Không đăng nội dung chính trị, phản động, xuyên tạc hoặc vi phạm pháp luật Việt Nam.</li>
               <li>Không quảng cáo, gắn số điện thoại hoặc đường dẫn bán hàng.</li>
@@ -168,53 +161,40 @@
           </div>
           <label class="check"><input type="checkbox" id="fCh" checked><span id="chLabel">Tham gia thử thách tháng này</span></label>
           <label class="check"><input type="checkbox" id="fOwn"><span>Tôi là tác giả bức ảnh, đã đọc quy tắc cộng đồng và đồng ý để Nikon Việt Nam trưng bày tác phẩm trên Khoảnh và các kênh truyền thông, có ghi tên tác giả.</span></label>
-          <button class="btn primary" type="submit" id="send">Gửi để duyệt</button>
+          <div><button class="btn primary" type="submit" id="send">Gửi để duyệt</button></div>
           <div class="msg" id="msg" role="status"></div>
         </form>
       </div>
     </div>
   </section>
 
-  <section class="band" id="school">
+  <section class="section" id="school" aria-labelledby="schTitle">
     <div class="wrap">
-      <div class="shead">
-        <div>
-          <div class="eyebrow">Nikon School Việt Nam</div>
-          <h2>Học chụp cùng Nikon</h2>
-          <p>Từ tấm ảnh đầu tiên trên tường đến buổi workshop đầu tiên. Nikon School tổ chức lớp học, buổi chụp thực hành và chia sẻ cùng nhiếp ảnh gia cho người dùng Nikon.</p>
+      <div class="school">
+        <img src="assets/img/samples/window-light.jpg" alt="" loading="lazy">
+        <div class="in">
+          <h2 class="display" id="schTitle">Nikon School</h2>
+          <p>Lớp học, buổi chụp thực hành và chia sẻ cùng nhiếp ảnh gia cho người dùng Nikon. Thành viên có ảnh được treo trên Khoảnh được ưu tiên mời tham dự photowalk cùng nhiếp ảnh gia khách mời.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn primary" id="schoolLink" target="_blank" rel="noopener">Xem lịch Nikon School</a><a class="btn on-image" href="https://vhgvietnam.vn/" target="_blank" rel="noopener">Sự kiện và khuyến mãi</a></div>
         </div>
       </div>
-      <div class="school">
-        <div class="school-card">
-          <div class="eyebrow">Workshop · Photowalk · Khoá học</div>
-          <h3>Lịch học và sự kiện cập nhật hằng tuần trên fanpage Nikon School</h3>
-          <p>Thành viên có ảnh được trưng bày trên Khoảnh được ưu tiên mời tham dự buổi chụp và chia sẻ cùng nhiếp ảnh gia khách mời.</p>
-          <div class="cta">
-            <a class="btn primary" id="schoolLink" target="_blank" rel="noopener">Xem lịch Nikon School</a>
-            <a class="btn" href="https://vhgvietnam.vn/" target="_blank" rel="noopener">Sự kiện &amp; khuyến mãi</a>
-          </div>
-        </div>
-        <div class="topics">
-          <div><b>Làm chủ hệ máy Z</b><span>Cài đặt lấy nét, Picture Control và quy trình SnapBridge.</span></div>
-          <div><b>Ánh sáng cuối ngày</b><span>Đo sáng, cân bằng trắng và cách đọc giờ vàng.</span></div>
-          <div><b>Chân dung ánh sáng tự nhiên</b><span>Chọn ống NIKKOR, dựng bố cục, làm việc với người mẫu.</span></div>
-          <div><b>Photowalk thành phố</b><span>Buổi chụp ngoài trời tại TP.HCM và Hà Nội cùng cộng đồng.</span></div>
-        </div>
+      <div class="topics">
+        <div><b>Làm chủ hệ máy Z</b><span>Lấy nét, Picture Control và quy trình SnapBridge.</span></div>
+        <div><b>Đọc giờ vàng</b><span>Đo sáng, cân bằng trắng và cách chờ ánh sáng cuối ngày.</span></div>
+        <div><b>Chân dung ánh sáng tự nhiên</b><span>Chọn ống NIKKOR, dựng bố cục, làm việc với người mẫu.</span></div>
+        <div><b>Photowalk thành phố</b><span>Chụp ngoài trời tại TP.HCM và Hà Nội cùng cộng đồng.</span></div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="social">
+  <section class="section" id="channels" aria-labelledby="chTitle">
     <div class="wrap">
       <div class="shead">
-        <div>
-          <div class="eyebrow">Kênh chính thức</div>
-          <h2>Theo dõi Nikon Việt Nam</h2>
-          <p>Tác phẩm nổi bật trên Khoảnh được giới thiệu lại trên các kênh dưới đây, có ghi tên tác giả.</p>
-        </div>
+        <h2 class="display" id="chTitle">Kênh chính thức</h2>
+        <p>Tác phẩm nổi bật trên Khoảnh được giới thiệu lại trên các kênh của Nikon Việt Nam, luôn ghi tên tác giả.</p>
       </div>
-      <div class="tagline"><span class="note">Gắn hashtag khi chia sẻ tác phẩm của bạn lên mạng xã hội</span><code id="hashtag"></code></div>
-      <div class="social" id="socialGrid"></div>
+      <div class="channels" id="socialGrid"></div>
+      <div class="hashtag"><span class="muted">Gắn hashtag khi chia sẻ tác phẩm lên mạng xã hội</span><code id="hashtag"></code></div>
     </div>
   </section>
 </main>
@@ -222,53 +202,53 @@
 <footer>
   <div class="wrap">
     <div>
-      <b>Khoảnh · Cộng đồng nhiếp ảnh Nikon Việt Nam</b>
+      <div class="mark">Khoảnh</div>
       <span id="fDist"></span>
     </div>
-    <div>
-      <b>Văn phòng</b>
-      <span id="fHcm"></span><br><span id="fHn"></span>
-    </div>
-    <div>
-      <b>Liên hệ</b>
-      Hotline <span id="fHot"></span><br>
-      Email <span id="fMail"></span><br>
-      <a href="https://vhgvietnam.vn/" target="_blank" rel="noopener">vhgvietnam.vn</a> · <a href="https://shopee.vn/nikonecommkp" target="_blank" rel="noopener">Shopee</a>
-    </div>
-    <div class="fine">Nikon và NIKKOR là thương hiệu của Nikon Corporation. Ảnh thuộc bản quyền của tác giả. Báo cáo nội dung vi phạm bằng nút “Báo cáo” dưới mỗi tác phẩm.</div>
+    <div><b>Văn phòng</b><span id="fHcm"></span><br><br><span id="fHn"></span></div>
+    <div><b>Liên hệ</b>Hotline <span id="fHot"></span><br>Email <span id="fMail"></span><br><br><a href="https://vhgvietnam.vn/" target="_blank" rel="noopener">vhgvietnam.vn</a> · <a href="https://shopee.vn/nikonecommkp" target="_blank" rel="noopener">Shopee</a></div>
+    <div class="fine">Nikon và NIKKOR là thương hiệu của Nikon Corporation. Ảnh thuộc bản quyền của tác giả. Báo cáo nội dung vi phạm bằng nút “Báo cáo” trong trang xem ảnh.</div>
   </div>
 </footer>
+
+<!-- Tab bar mobile (Liquid Glass) -->
+<nav class="tabbar glass" id="tabbar" aria-label="Điều hướng">
+  <a href="#gallery" data-tab="gallery" class="cur"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="11.5" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="15.5" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/></svg><span>Trưng bày</span></a>
+  <a href="#challenge" data-tab="challenge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h10v5a5 5 0 01-10 0V4zM12 14v4M8 20h8M17 6h3v1.5A3.5 3.5 0 0116.5 11M7 6H4v1.5A3.5 3.5 0 007.5 11" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>Thử thách</span></a>
+  <a href="#submit" data-tab="submit" class="post" aria-label="Gửi ảnh"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Gửi ảnh</span></a>
+  <a href="#channels" data-tab="channels"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17" stroke="currentColor" stroke-width="1.5"/></svg><span>Kênh</span></a>
+  <button type="button" id="tabMe"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c1.3-3.6 4.1-5.4 7.5-5.4s6.2 1.8 7.5 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span id="tabMeLabel">Tài khoản</span></button>
+</nav>
 
 <!-- Đăng nhập / đăng ký -->
 <div class="overlay" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <div class="sheet">
     <button class="x-btn" type="button" data-close aria-label="Đóng">✕</button>
-    <div class="eyebrow">Tài khoản Khoảnh</div>
     <h3 id="authTitle">Chào mừng trở lại</h3>
+    <p class="muted" style="margin:0" id="authSub">Tài khoản cộng đồng Khoảnh · Nikon Việt Nam</p>
     <div class="tabs" role="tablist">
       <button type="button" role="tab" id="tabLogin" aria-selected="true">Đăng nhập</button>
       <button type="button" role="tab" id="tabSignup" aria-selected="false">Tạo tài khoản</button>
     </div>
-    <form id="loginForm" novalidate>
-      <div class="f"><label for="lEmail">Email</label><input id="lEmail" type="email" autocomplete="email" required></div>
-      <div class="f"><label for="lPass">Mật khẩu</label><input id="lPass" type="password" autocomplete="current-password" required></div>
-      <button class="btn primary" type="submit" style="width:100%">Đăng nhập</button>
-      <p style="margin:14px 0 0"><button class="linkish" type="button" id="forgotBtn">Quên mật khẩu?</button></p>
+    <form id="loginForm" class="fields" novalidate>
+      <div class="field"><label for="lEmail">Email</label><input id="lEmail" type="email" autocomplete="email" inputmode="email"></div>
+      <div class="field"><label for="lPass">Mật khẩu</label><input id="lPass" type="password" autocomplete="current-password"></div>
+      <button class="btn primary" type="submit">Đăng nhập</button>
+      <button class="linkish" type="button" id="forgotBtn" style="justify-self:start">Quên mật khẩu?</button>
     </form>
-    <form id="signupForm" novalidate hidden>
-      <div class="f"><label for="sName">Tên hiển thị</label><input id="sName" maxlength="40" autocomplete="nickname" placeholder="Tên sẽ hiện dưới tác phẩm"></div>
-      <div class="f"><label for="sEmail">Email</label><input id="sEmail" type="email" autocomplete="email"></div>
-      <div class="f"><label for="sPass">Mật khẩu (tối thiểu 8 ký tự)</label><input id="sPass" type="password" autocomplete="new-password" minlength="8"></div>
-      <div class="f"><label for="sCam">Máy Nikon bạn đang dùng</label><select id="sCam"></select></div>
+    <form id="signupForm" class="fields" novalidate hidden>
+      <div class="field"><label for="sName">Tên hiển thị</label><input id="sName" maxlength="40" autocomplete="nickname" placeholder="Tên hiện dưới tác phẩm"></div>
+      <div class="field"><label for="sEmail">Email</label><input id="sEmail" type="email" autocomplete="email" inputmode="email"></div>
+      <div class="field"><label for="sPass">Mật khẩu, tối thiểu 8 ký tự</label><input id="sPass" type="password" autocomplete="new-password" minlength="8"></div>
+      <div class="field"><label for="sCam">Máy Nikon bạn đang dùng</label><select id="sCam"></select></div>
       <label class="check"><input type="checkbox" id="sAgree"><span>Tôi đồng ý với quy tắc cộng đồng Khoảnh.</span></label>
-      <button class="btn primary" type="submit" style="width:100%">Tạo tài khoản</button>
+      <button class="btn primary" type="submit">Tạo tài khoản</button>
     </form>
-    <form id="resetForm" novalidate hidden>
-      <p class="note" style="margin-top:0">Đặt mật khẩu mới cho tài khoản của bạn.</p>
-      <div class="f"><label for="rPass">Mật khẩu mới</label><input id="rPass" type="password" autocomplete="new-password" minlength="8"></div>
-      <button class="btn primary" type="submit" style="width:100%">Lưu mật khẩu</button>
+    <form id="resetForm" class="fields" novalidate hidden>
+      <div class="field"><label for="rPass">Mật khẩu mới</label><input id="rPass" type="password" autocomplete="new-password" minlength="8"></div>
+      <button class="btn primary" type="submit">Lưu mật khẩu</button>
     </form>
-    <div class="msg" id="authMsg" role="status"></div>
+    <div class="msg" id="authMsg" role="status" style="margin-top:14px"></div>
   </div>
 </div>
 
@@ -276,47 +256,54 @@
 <div class="overlay" id="mine" hidden role="dialog" aria-modal="true" aria-labelledby="mineTitle">
   <div class="sheet wide">
     <button class="x-btn" type="button" data-close aria-label="Đóng">✕</button>
-    <div class="eyebrow">Tài khoản</div>
     <h3 id="mineTitle">Ảnh của tôi</h3>
-    <p class="note">Ảnh chờ duyệt chỉ bạn và ban quản trị nhìn thấy.</p>
+    <p class="muted" style="margin:0">Ảnh chờ duyệt chỉ bạn và ban quản trị nhìn thấy.</p>
     <div class="mine" id="mineGrid"></div>
   </div>
 </div>
 
 <!-- Xem ảnh -->
-<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle">
-  <button class="close" id="vClose" type="button">Đóng ✕</button>
-  <div class="stage"><img id="vImg" alt=""></div>
-  <aside>
+<div class="viewer" id="viewer" tabindex="-1" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle">
+  <div class="stage" id="vStage">
+    <img id="vImg" src="assets/img/samples/dalat-fog-sm.jpg" alt="">
+    <svg class="burst" id="burst" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M12 2l3.5 7.5M22 12l-7.5 3.5M12 22l-3.5-7.5M2 12l7.5-3.5M19 5l-5.2 5.2M19 19l-5.2-5.2M5 19l5.2-5.2M5 5l5.2 5.2" stroke="currentColor" stroke-width="1.3"/></svg>
+    <button class="vbtn v-close glass-clear" id="vClose" type="button">Đóng</button>
+    <span class="vbtn v-count glass-clear" id="vCount"></span>
+    <button class="vbtn v-prev glass-clear" id="vPrev" type="button" aria-label="Ảnh trước"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="vbtn v-next glass-clear" id="vNext" type="button" aria-label="Ảnh sau"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+  <aside class="panel" id="vPanel">
+    <button class="grab" id="vGrab" type="button" aria-label="Mở rộng thông tin ảnh"></button>
     <div>
-      <div class="eyebrow" id="vEyebrow"></div>
-      <h3 id="vTitle" style="margin-top:10px"></h3>
-      <div class="note" id="vBy" style="margin-top:6px"></div>
+      <h3 id="vTitle"></h3>
+      <div class="by" id="vBy"></div>
+    </div>
+    <div class="tags" id="vTags"></div>
+    <div class="actions">
+      <button type="button" class="like" id="vLike" aria-pressed="false"></button>
+      <button type="button" class="btn small" id="vShare">Sao chép link</button>
     </div>
     <p class="story" id="vStory"></p>
     <div class="exif" id="vExif"></div>
     <div class="gear" id="vGear"></div>
     <div class="actions">
-      <button type="button" class="like-btn" id="vLike" aria-pressed="false"></button>
-      <span class="note" id="vLikeNote"></span>
-    </div>
-    <div class="actions">
       <button class="linkish" id="vReportBtn" type="button">Báo cáo vi phạm</button>
       <button class="linkish" id="vDelete" type="button" hidden>Gỡ tác phẩm của tôi</button>
     </div>
     <form class="report" id="vReport" hidden>
-      <b style="font-size:13.5px">Tác phẩm này vi phạm vì</b>
+      <b style="font-size:14px">Tác phẩm này vi phạm vì</b>
       <div id="vReasons"></div>
       <div class="actions"><button class="btn small" type="submit">Gửi báo cáo</button><button class="linkish" type="button" id="vReportCancel">Huỷ</button></div>
     </form>
     <div>
-      <div class="eyebrow" style="margin-bottom:14px" id="vCmHead">Lời nhắn</div>
+      <div style="font-weight:600;margin-bottom:14px" id="vCmHead">Lời nhắn</div>
       <div class="comments" id="vComments"></div>
     </div>
     <form class="cform" id="cform">
       <input id="cInput" maxlength="400" placeholder="Viết lời nhắn cho tác giả" aria-label="Lời nhắn">
       <button type="submit">Gửi</button>
     </form>
+    <div class="keys" id="vKeys"><kbd>←</kbd> <kbd>→</kbd> chuyển ảnh · <kbd>L</kbd> thích · <kbd>C</kbd> viết lời nhắn · <kbd>Esc</kbd> đóng</div>
   </aside>
 </div>
 

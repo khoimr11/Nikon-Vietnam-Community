@@ -6,6 +6,11 @@ Website tĩnh (chạy trên GitHub Pages) để người dùng Nikon đăng ản
 - `admin.html`: trang duyệt ảnh cho ban quản trị
 - `assets/js/config.js`: **file duy nhất cần sửa** (khoá Supabase, chủ đề thử thách, link mạng xã hội, thông tin VHG)
 - `supabase/schema.sql`: cơ sở dữ liệu, phân quyền, kho ảnh
+- `PRODUCT.md`, `DESIGN.md`: bối cảnh sản phẩm và hệ thiết kế (đọc bởi Impeccable)
+- `assets/fonts`: font tự lưu trữ, đủ dấu tiếng Việt (Archivo, Cormorant Garamond, Be Vietnam Pro, IBM Plex Mono · SIL OFL)
+- `assets/img/samples`: ảnh minh hoạ cho chế độ demo, thay bằng ảnh thật trước khi ra mắt
+
+Tính năng chính: phòng trưng bày lọc theo thể loại, máy Nikon và tìm kiếm; trình xem ảnh với phím tắt (← → L C Esc), vuốt và chạm đúp để thích trên điện thoại; link chia sẻ từng ảnh; thử thách tháng và bảng vinh danh; gửi ảnh tự đọc EXIF; đăng ký email; trang duyệt ảnh với phím tắt (J K A R); báo cáo vi phạm; lọc từ khoá lời nhắn.
 
 Khi chưa điền khoá Supabase, website chạy **chế độ demo** với ảnh mẫu để trình bày ý tưởng.
 
@@ -88,3 +93,10 @@ Sửa `CHALLENGE` trong `assets/js/config.js` (tên chủ đề, hashtag, giải
 
 - Nhờ Legal duyệt: điều khoản cấp quyền sử dụng ảnh, thể lệ cuộc thi, chính sách dữ liệu cá nhân, và xác nhận chương trình có cần đăng ký khuyến mại với Sở Công Thương hay không.
 - Xin phép Nikon Việt Nam/VHG Marketing sử dụng logo và tên "Nikon" trên website.
+
+## 7. Kiểm tra chất lượng giao diện
+
+```
+npx impeccable detect http://localhost:8000/index.html
+```
+Bản hiện tại trả về 0 lỗi trên trang đã render (bản trước: 33 lỗi).
